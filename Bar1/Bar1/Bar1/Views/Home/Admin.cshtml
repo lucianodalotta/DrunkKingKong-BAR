@@ -1,0 +1,97 @@
+﻿@model List<Bar1.Models.Producto>
+@{
+    ViewBag.Title = "AdminView";
+}
+
+<hr />
+Bienvenido: @ViewBag.AdminLogueado.Usuario
+<hr />
+
+Lista De productos :
+
+<ul id="ul-grilla">
+    @for (int i = 0; i < @Bar1.Datos.ADProducto.ProductosLista.Count; i++)
+    {
+
+        <div class="menuContainer">
+            <div class="Img parpadeoLeve">
+                <a href="/Home/Comprar/@Model[i].ID">
+                    <img class="img-grilla parpadeo ImgTraslucentNo" src=@Model[i].img>
+                </a>
+            </div>
+            <div class="grillaTitulo parpadeo">
+                <h2>@Model[i].Nombre</h2>
+                <h2>ID: @Model[i].ID</h2>
+            </div>
+            <div class="precio">
+                <h3>Precio por Paquete</h3>
+                <h4><b>Desde:</b> $@Model[i].Precio</h4>
+                <h4>
+                    <a href="/Home/ADBorrarProducto/@Model[i].ID" class="btn btn-primary">Borrar Producto</a>
+                </h4>
+            </div>
+        </div>
+    }
+</ul>
+
+Agregar producto :
+
+<form action="ADAgregarProducto" method="get">
+    <label>Ingrese  Datos</label>
+    <div>
+        <input type="text" value="Ingrese ID del Producto" name="ID" />
+    </div>
+    <div>
+        <input type="text" value=" Nombre del Producto" name="Nombre" />
+    </div>
+    <div>
+        <input type="text" value="Descripcion" name="Descripcion" />
+    </div>
+    <div>
+        <input type="text" value="Precio" name="Precio" />
+    </div>
+    <div>
+        <input type="text" value="Url De la Imagen" name="Img" />
+    </div>
+    <div>
+        <input type="submit" value="Aceptar" />
+    </div>
+</form>
+
+Lista De pedidos :
+@foreach (var item in Bar1.Datos.ADPedido.PedidosLista)
+{
+
+    <div class="menuContainer">
+        <div class="Img parpadeoLeve">
+        </div>
+        <div class="grillaTitulo parpadeo">
+            <h2>Cliente Nombre: @item.Nombre</h2>
+            <h2>Cliente Apellido: @item.Apellido</h2>
+            <h2>Direccion: @item.Domicilio</h2>
+            <h2>Fecha de entrega: @item.Fecha</h2>
+            <h2>ID de pedido: @item.pedidoID</h2>
+            <h2>Total a pagar: $@item.Total</h2>
+            <h2>
+                Productos Solicitados:
+                @foreach (var i in item.ProductosLista)
+                {
+                    <h2>Producto:</h2>
+                    @i.Nombre;
+                    <h2>Cantidad:</h2>
+                    @i.Cantidad
+                }
+            </h2>
+        </div>
+        <div class="descripcion parpadeo">
+            <h4>Numero de Teléfono: @item.Contacto</h4>
+            <h2>Entregado: @item.Entregado</h2>
+            <th>
+                <a href="entregar/@item.pedidoID" class="btn btn-primary">Confirmar Entrega</a>
+            </th>
+
+
+        </div>
+    </div>
+
+}

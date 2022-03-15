@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Bar1",
+    "\\Bar1\\Bar1",
+    "\\Bar1\\Bar1\\Bar1",
+    "\\Bar1\\Bar1\\Bar1\\Views",
+    "\\Bar1\\Bar1\\Bar1\\Views\\Home"
+  ],
+  "SelectedNode": "\\Bar1\\Bar1\\Bar1\\Views\\Home\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}

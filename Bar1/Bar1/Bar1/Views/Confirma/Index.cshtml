@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<body>
+
+    <div class="containerConfirmacion">
+
+        <div class="split left">
+            <form action="/Confirma/Confirmar/" method="get">
+                <br>
+                <div>
+                    <input class="inputCorto" type="text" id="txtNombre" name="Nombre" value="Nombre" />
+                </div>
+                <div>
+                    <input class="inputCorto" type="text" id="txtApellido" name="Apellido" value="Apellido" />
+                </div>
+                <br>
+                <div>
+                    <input class="inputLargo" type="text" id="txtDomicilio" name="Domicilio" value="Domicilio XXXX" />
+                </div>
+                <div>
+                    <input class="inputLargo" type="text" id="txtContacto" name="Contacto" value="Numero de Teléfono" />
+                </div>
+                <br>
+                <div>
+                    <input class="inputLargo" type="text" id="txtFecha" name="Fecha" value="Fecha de Entrega (DD/MM)" />
+                </div>
+                <br>
+                <div class="botonIzquierda">
+                    <input class="inputLargo" type="submit" value="C o n f i r m a r   P e d i d o" />
+                </div>
+            </form>
+        </div>
+
+        <div class="split right">
+            <div class="listaProductos">
+                @foreach (var item in Bar1.Models.Cliente.ClienteLista)
+                {
+                    <img class="imagenIcono img-grilla" src=@item.img>
+                }
+            </div>
+            <div>
+                <h3>Subtotal</h3>
+                @foreach (var item in Bar1.Models.Cliente.ClienteLista)
+                {
+                    @item.Nombre
+                    <p>Precio=$@item.Subtotal(item.Cantidad, item.Precio)</p>
+                    <p>-----------------</p>
+                }
+
+            </div>
+
+            <div>
+                <p>Total =$@Bar1.Models.Cliente.getTotal() </p>
+            </div>
+        </div>
+
+        <div class="contenedorBotones">
+            <div class="botonIzquierda">
+                <div class="botonDerecha">
+                    <a class="inputLargo" href="@Url.Action("Cancelar","Confirma")" onclick="return confirm ('Seguro que quiere volver al Carrito?');">
+                        Cancelar Pedido
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

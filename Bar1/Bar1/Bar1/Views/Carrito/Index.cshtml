@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Carrito";
+}
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" type="text/css" media="screen, projection" />
+</head>
+
+<body>
+    <div class="underContainer" id="underContainer">
+        <div class="continuarCompra" id="continuarCompra">
+            <h2>Este es tu Carrito</h2>
+            <input type="button" id="continuarCompra" value="Seguir comprando" onclick="window.location.href=('@Url.Action("Index","Home")')" />
+        </div>
+
+        <div class="tablaCarrito" id="tablaCarrito">
+            <table style="width:100%">
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+
+                @foreach (var item in Bar1.Models.Cliente.ClienteLista)
+                {
+                    <tr >
+                        <th class="img">
+                            @item.Nombre
+                            <img class="img-grilla" src=@item.img>
+                        </th>
+
+                        <th>$@item.Precio</th>
+                        <th> @item.Cantidad</th>
+                        <th>$@item.Subtotal(item.Cantidad, item.Precio)</th>
+                        <th>
+                            <a href="/Carrito/remover/@item.ID" class="btn btn-primary">Remover</a>
+                        </th>
+                    </tr>
+                }
+
+
+                <tr>
+                    <th>Subtotal</th>
+                    <th>$@Bar1.Models.Cliente.getTotal() </th>
+                </tr>
+            </table>
+        </div>
+        <div class="confirmaDePedido" id="confirmaDePedido">
+            <a href="/Carrito/Limpiar" class="btn btn-primary">Reiniciar Carrito</a>
+            <div class="confirmaDePedido" id="confirmaDePedido">
+                <input type="button" value="terminar compras" onclick="window.location.href=('@Url.Action("Index","Confirma")')" />
+            </div>
+        </div>
+    </div>
+
+
+</body>

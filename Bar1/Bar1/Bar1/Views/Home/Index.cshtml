@@ -1,0 +1,98 @@
+﻿@model List<Bar1.Models.Producto>
+@{
+    ViewBag.Title = "Home";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            -->
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+
+                @for (int i = 0; i <4; i++)
+                {
+                    var clase = "";
+                    if (i == 0) { clase = "active"; }
+
+                    <div class="item @clase">
+                        <a href="/Home/Comprar/@Model[i].ID">
+                            <img class="img-carrousel" src=@Model[i].img onclick="Comprar(@Model[i].ID)">
+
+                            <div class="carousel-caption">
+                                <h3>@Model[i].Nombre</h3>
+                                <h4>@Model[i].Descripcion</h4>
+                                <h4>$@Model[i].Precio</h4>
+                            </div>
+                        </a>
+                    </div>
+                }
+                }
+
+
+
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+
+
+    <ul id="ul-grilla">
+        @for (int i = 4; i < @Bar1.Datos.ADProducto.ProductosLista.Count; i++)
+        {
+
+            <div class="menuContainer">
+                <div class="Img parpadeoLeve">
+                    <a href="/Home/Comprar/@Model[i].ID">
+                        <img class="img-grilla parpadeo ImgTraslucentNo" src=@Model[i].img>
+                    </a>
+                </div>
+                <div class="grillaTitulo parpadeo">
+                    <h2>@Model[i].Nombre</h2>
+                </div>
+                <div class="precio">
+                    <h3>Precio por Paquete</h3>
+                    <h4><b>Desde:</b> $@Model[i].Precio</h4>
+                    <h4>
+                        <a href="/Home/Comprar/@Model[i].ID" class="btn btn-primary">Agregar A Carrito</a>
+                    </h4>
+                </div>
+            </div>
+        }
+    </ul>
+
+
+    <a  class="btn btn-primary" style="margin: auto" href="/Cocteles/Index">Ver Todo</a>
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿@model List<Bar1.Models.Producto>
+@{
+    ViewBag.Title = "Cocteles";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <h2 class="titulos parpadeoLeve">Cocteles</h2>
+
+    <div id="div-grilla">
+        <ul id="ul-grilla">
+            @for (int i = 0; i < @Bar1.Datos.ADProducto.ProductosLista.Count; i++)
+            {
+
+                <div class="menuContainer">
+                    <div class="Img parpadeoLeve">
+                        <a href="/Home/Comprar/@Model[i].ID">
+                            <img class="img-grilla parpadeo ImgTraslucentNo" src=@Model[i].img>
+                        </a>
+                    </div>
+                    <div class="grillaTitulo parpadeo">                       
+                            <h2>@Model[i].Nombre</h2>
+                    </div>
+                    <div class="descripcion parpadeo">
+                        <a href="/Home/Comprar/@Model[i].ID">
+                            <h4>@Model[i].Descripcion</h4>
+                        </a>
+                        <div class="precio">
+                            <h3>Precio por Paquete</h3>
+                            <h4><b>Desde:</b> $@Model[i].Precio</h4>
+                            <h4>
+                                <a href="/Home/Comprar/@Model[i].ID" class="btn btn-primary">Agregar a Carrito</a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            }
+        </ul>
+    </div>
+
+
+</body>

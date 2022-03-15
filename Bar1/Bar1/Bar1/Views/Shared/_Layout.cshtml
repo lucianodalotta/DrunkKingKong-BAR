@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/css/styles.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+</head>
+<body>
+
+    <div id="laycontainer">
+        <div class="delivery">
+            <input type="button" value="Delivery & Take away: Horarios de envio">
+        </div>
+
+        <div class="misBotones">
+            <a href="/Home">
+                <div class="logo parpadeoLeve">
+                    <img src=~/Assets/logoPrincipal.png />
+                </div>
+            </a>
+
+            <div class="centro parpadeo">
+                <input type="button" value="Home" onclick="window.location.href=('@Url.Action("Index","Home")')" />>
+                <input type="button" value="Nosotros" onclick="window.location.href=('@Url.Action("Index","Contacto")')" />
+                <input type="button" value="Cocteles" onclick="window.location.href=('@Url.Action("Index","Cocteles")')" />
+            </div>
+            <div class="contenedorBuscador izquierda parpadeo">
+                <input type="text" id="busqueda">
+                <input type="image" id="buscar" value="Buscar" src="~/Assets/iconoLupa.png">
+                <input type="button" id="carrito" value="Carrito" onclick="window.location.href=('@Url.Action("Index","Carrito")')" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <container>
+                <div class="botonesFooter parpadeoLeve">
+                    <div class="footercontain">
+                        <div class="links">
+                            <a href="https://localhost:44318/Contacto">Nosotros</a>
+                            <br>
+                            <a href="https://localhost:44318/Cocteles/Index">Cocteles</a>
+                            <br>
+                            <a href="https://www.youtube.com/watch?v=3BOB2KlZ-2A&ab_channel=GaijinBishonen">drunkkingkong@gmail.com</a>
+                            <br>
+                            <a href="https://localhost:44318/Home/Login">Administrar</a>
+                            <br>
+                        </div>
+                        <div class="iconos">
+                            <img src="~/Assets/iconoWhatsapp.png"><p>11-6265-9495</p>
+                        </div>
+                        <div class="iconos">
+                            <img src="~/Assets/iconCel.png"><p>4885-0431</p>
+                        </div>
+                    </div>
+                    <!-- En las imagenes cambiamos el "." de "./Assets" por "~/Assets" Porque funcionaba en "/Home" pero no en "Home/Index"-->
+                    <span>Av siempre viva 4545</span>
+                    <span>&copy; @DateTime.Now.Year - My ASP.NET Application</span>
+                </div>
+            </container>
+        </footer>
+    </div>
+</body>
+</html>

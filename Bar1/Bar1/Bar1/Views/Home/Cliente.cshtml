@@ -1,0 +1,16 @@
+﻿@model Bar1.Models.Cliente
+
+@{
+    ViewBag.Title = "Cliente";
+}
+
+<h2>Esta es la vista de mi cliente</h2>
+
+<button id="nombreClien" name="nombre" value="@ViewBag.Nombre"></button>
+
+<form action="Cliente" method="post">
+    DNI : <input  type="text" name="DNI" />
+    NOMBRE : <input type="text" name="Nombre" />
+    DIRECCION : <input type="text" name="Direccion" />
+    <input type="submit" value="Ingresar" />
+</form>
